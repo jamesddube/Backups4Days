@@ -20,7 +20,7 @@ try:
     sender = 'SENDER-EMAIL@gmail.com'
     receivers = ['username@domain.tld']
     message = """From: Daily Update <SENDER-EMAIL@gmail.com>
-To: YOUR NAME <username@domain.tldm>
+To: YOUR NAME <username@domain.tld>
 MIME-Version: 1.0
 Content-type: text/html
 Subject: Daily Photos Backup Directory Listing
