@@ -1,0 +1,24 @@
+System report for HOSTNAME.local
+
+
+Current time: Wed Feb 24 02:52:49 EST 2016
+
+
+Latest Time Machine backup:
+2016-02-24-023459
+
+
+Disk Space:
+Filesystem    Capacity       Used     Available
+/dev/disk1    85%       824424016     149752240
+
+
+Uptime:
+ 2:52  up 6 days, 16:44, 7 users, load averages: 1.50 1.16 1.11
+
+
+Battery health:
+81  %
+650 cycles
+
+
