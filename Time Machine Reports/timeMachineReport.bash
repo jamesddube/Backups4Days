@@ -5,8 +5,7 @@
 # Tested on a MacBook Pro with OS X 10.11.3
 # Untested on Mac desktops
 
-backupPath="/Volumes/BACKUP-VOLUME/" # change this to your Time Machine path
-email="youremail@domain.tld"
+email="youremail@domain.tld" # change to your email
 
 hostname=`hostname`
 time=`date`
@@ -20,13 +19,11 @@ echo -e "\n" >> report.txt
 echo Current time: $time >> report.txt
 echo -e "\n" >> report.txt
 
-if [ ! -d $backupPath ]
+tmutil latestbackup
+if [ $? -eq 1 ]   # if command returns error
 then
-	echo -e "Time Machine backup disk currently unavailable\n" >> report.txt
-fi
-
-if [ -d $backupPath ]
-then
+	echo -e "Time Machine backup disk currently unavailable." >> report.txt
+else
 	echo -e "Latest Time Machine backup:" >> report.txt
 	tmutil latestbackup | tail -c 18 >> report.txt
 fi
@@ -40,7 +37,7 @@ echo Uptime: >> report.txt
 uptime >> report.txt
 echo -e "\n" >> report.txt
 
-echo Battery health: >> report.txt
+echo Battery Health: >> report.txt
 echo -e "${batHealth}  %" >> report.txt
 echo -e "${cycles} cycles" >> report.txt
 echo -e "\n" >> report.txt
