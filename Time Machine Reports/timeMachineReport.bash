@@ -9,10 +9,10 @@ email="youremail@domain.tld" # change to your email
 
 hostname=`hostname`
 time=`date`
-maxBatCap=`ioreg -l | grep "MaxCapacity" | awk ' { print $5 } '`
-designBatCap=`ioreg -l | grep "DesignCapacity" | awk ' { print $5 } '`
-batHealth=`bc <<< "scale=2; ${maxBatCap}/${designBatCap}" | cut -c 2-`
-cycles=`ioreg -l | grep "Cycle Count" | rev | cut -c -5 | cut -c 2- | rev | cut -c 2-` # assumes no more than 9999 cycles
+maxBatCap=`/usr/sbin/ioreg -l | grep "MaxCapacity" | awk ' { print $5 } '`
+designBatCap=`/usr/sbin/ioreg -l | grep "DesignCapacity" | awk ' { print $5 } '`
+batHealth=`/usr/bin/bc <<< "scale=2; ${maxBatCap}/${designBatCap}" | cut -c 2-`
+cycles=`/usr/sbin/ioreg -l | grep "Cycle Count" | rev | cut -c -5 | cut -c 2- | rev | cut -c 2-` # assumes no more than 9999 cycles
 
 echo System report for $hostname > report.txt
 echo -e "\n" >> report.txt
@@ -43,6 +43,8 @@ echo -e "${cycles} cycles" >> report.txt
 echo -e "\n" >> report.txt
 
 cat report.txt | mail -s "Backup Report" $email
+
+rm report.txt
 
 
 
